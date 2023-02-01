@@ -67,10 +67,6 @@ export default function ChatRoom() {
     return (
        <Layout>
           <div className={styles.chatRoomContainer}>
-            <div className={styles.chatRoomTopBar}>
-               <h1>Room: {roomid}</h1>
-               {user && <UserAvatar user={user}></UserAvatar>}
-            </div>
             <Users users={users}></Users>
             <div className={styles.messagesContainer}>
                <ol className={styles.messagesList}>

@@ -3,22 +3,12 @@ import styles from '@/styles/users.module.css';
 import { User } from '@/lib/types';
 
 const Users = ({ users }: { users: User[]}) => {
-    return users.length > 0 ? (
+    return (
       <div>
-        <h2>Also in this room:</h2>
-        <ul className={styles.userList}>
-          {users.map((user, index) => (
-            <li key={index} className={styles.userBox}>
-              <span>{user.name}</span>
-              <UserAvatar user={user}></UserAvatar>
-            </li>
-          ))}
-        </ul>
+        currently online: {users.length}
       </div>
-    ) : (
-      <div>There is no one else in this room</div>
-    );
-};
+    )
+  };
   
 export default Users;
   

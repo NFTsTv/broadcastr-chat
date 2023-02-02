@@ -13,6 +13,19 @@ const nextConfig = {
     ],
   },
   output: 'standalone',
+  async headers() {
+    return [
+      {
+        source: '/api/**',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+    ]
+  }
 }
 
 module.exports = nextConfig

@@ -57,12 +57,12 @@ export default function ChatRoom() {
       else stopTypingMessage();
     }, [isTyping]);
 
-    useEffect(() => {
-		  // If the component has not been rendered yet, scrollTarget.current will be null
-		  if (scrollTarget.current) {
-			  (scrollTarget.current as any).scrollIntoView({ behavior: 'smooth' });
-		  }
-	  }, [messages.length + typingUsers.length]);
+    // useEffect(() => {
+		//   // If the component has not been rendered yet, scrollTarget.current will be null
+		//   if (scrollTarget.current) {
+		// 	  (scrollTarget.current as any).scrollIntoView({ behavior: 'smooth' });
+		//   }
+	  // }, [messages.length + typingUsers.length]);
   
     return (
        <Layout>

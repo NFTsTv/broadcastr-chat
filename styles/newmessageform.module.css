@@ -1,5 +1,6 @@
 .newMessageForm {
     display: flex;
+    position: relative;
 }
   
 .newMessageInputField {
@@ -11,14 +12,15 @@
 }
   
 .sendMessageButton {
+  position: absolute;
+  right: 0;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     color: white;
-    background: rgb(0, 132, 255);
-    padding: 8px 12px;
+    background: rgb(82, 84, 85);
+    padding: 6px 12px;
     border: none;
     border-radius: 8px;
-    margin-left: 8px;
     cursor: pointer;
 }
   

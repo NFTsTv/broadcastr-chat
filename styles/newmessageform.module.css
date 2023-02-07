@@ -1,31 +1,29 @@
 .newMessageForm {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
-  
+
 .newMessageInputField {
-    flex: 1;
-    font-size: 1rem;
-    padding: 8px 12px;
-    resize: none;
-    border-radius: 8px;
+  flex: 1;
+  font-size: 1rem;
+  padding: 8px 12px;
+  resize: none;
+  border-radius: 8px;
 }
-  
+
 .sendMessageButton {
   position: absolute;
   right: 0;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: white;
-    background: rgb(82, 84, 85);
-    padding: 6px 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  font-size: 1.4rem;
+  color: white;
+  background: #fb62b4;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
 }
-  
+
 .newMessageInputField,
 .sendMessageButton {
-    border-color: #9a9a9a;
+  border-color: #9a9a9a;
 }
-  

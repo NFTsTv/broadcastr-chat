@@ -14,14 +14,15 @@ function ioHandler(req: NextApiRequest, res: NextApiResponse) {
     
         const io = new Server((res.socket as any).server);
         
-        io.on('connection', socket => {
+        io.on('connection', async socket => {
           console.log(`${socket.id} connected`);
 
           // Join a conversation
-          const { roomId, name, picture } = socket.handshake.query;
+          const { roomId, name, picture, password } = socket.handshake.query;
           socket.join(roomId as string);
         
-          const user = addUser(socket.id, roomId as string, name as string, picture as string);
+          const user = await addUser(password as string, roomId as string, name as string, picture as string);
+          console.log(`${user.name} joined room ${roomId}`);
           io.in(roomId as string).emit(USER_JOIN_CHAT_EVENT, user);
         
           // Listen for new messages
@@ -40,7 +41,7 @@ function ioHandler(req: NextApiRequest, res: NextApiResponse) {
 
           // Leave the room if the user closes the socket
           socket.on("disconnect", () => {
-            removeUser(socket.id);
+            removeUser(password as string, roomId as string);
             io.in(roomId as string).emit(USER_LEAVE_CHAT_EVENT, user);
             socket.leave(roomId as string);
           });

@@ -5,7 +5,6 @@ import clientPromise from "./mongodb";
 // const messages: Message[] = [];
 
 export const addMessage = async (room: string, message: MessageData) => {
-  console.log("adding message", message);
   const msg = { id: uuidv4(), room, ...message, sentAt: Date.now() };
   const client = await clientPromise;
   const db = client.db();
@@ -31,6 +30,5 @@ export const getMessagesInRoom = async (room: string) => {
   const db = client.db();
   const collection = db.collection("messages").find({ room });
   const messages = await collection.toArray();
-  console.log(messages);
   return messages;
 };

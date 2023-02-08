@@ -10,6 +10,12 @@ const nextConfig = {
         port: "",
         pathname: "/api/**",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.dicebear.com",
+        port: "",
+        pathname: "/api/**",
+      }
     ],
   },
   output: "standalone",

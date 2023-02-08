@@ -4,7 +4,7 @@ import { User } from '@/lib/types';
 
 const Users = ({ users }: { users: User[]}) => {
     return (
-      <div style={{marginLeft: "auto", color: "white"}}>
+      <div style={{marginLeft: "auto", color: "black"}}>
         currently online: {users.length}
       </div>
     )

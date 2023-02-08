@@ -25,8 +25,8 @@ function ioHandler(req: NextApiRequest, res: NextApiResponse) {
           io.in(roomId as string).emit(USER_JOIN_CHAT_EVENT, user);
         
           // Listen for new messages
-          socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-            const message = addMessage(roomId as string, data);
+          socket.on(NEW_CHAT_MESSAGE_EVENT, async (data) => {
+            const message = await addMessage(roomId as string, data);
             io.in(roomId as string).emit(NEW_CHAT_MESSAGE_EVENT, message);
           });
 

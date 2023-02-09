@@ -1,25 +1,24 @@
 .newMessageForm {
   display: flex;
-  position: relative;
+  width: 100%;
+  resize: vertical;
+  word-wrap: break-word;
 }
 
 .newMessageInputField {
   flex: 1;
   font-size: 1rem;
-  padding: 8px 12px;
-  resize: none;
+  margin-right: 10px;
   border-radius: 8px;
 }
 
 .sendMessageButton {
-  position: absolute;
-  right: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: white;
-  background: #fb62b4;
+  background: #36d399;
   padding: 6px 16px;
   border: none;
-  border-radius: 0 8px 8px 0;
+  border-radius: 10px;
   cursor: pointer;
 }
 

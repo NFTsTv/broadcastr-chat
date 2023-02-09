@@ -1,15 +1,19 @@
 .userList {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 8px;
-    padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px;
+  padding: 0;
 }
-  
+
 .userBox {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 8px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px;
 }
-  
+
+.usersOnline {
+  /* put item on the left */
+  margin-left: 0;
+}

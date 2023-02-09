@@ -7,7 +7,6 @@ import useTyping from "@/lib/usetyping";
 import NewMessageForm from "@/components/newmessageform";
 import TypingMessage from "@/components/typingmessage";
 import Users from "@/components/users";
-import UserAvatar from "@/components/useravatar";
 import Layout from "@/components/layout";
 import styles from "@/styles/chatroom.module.css";
 
@@ -90,33 +89,35 @@ export default function ChatRoom() {
           <div ref={scrollTarget}></div>
         </div>
         {!user ? (
-          <div className={styles.loginMessage}>
-            Please set your username
-            <input
-              type="text"
-              value={user}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            and password
-            <input 
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              onClick={() =>
-                setUser({
-                  name: userName,
-                  password: password,
-                  picture:
-                    "https://avatars.dicebear.com/api/human/" +
-                    userName +
-                    ".svg",
-                })
-              }
-            >
-              Set
-            </button>
+          <div className={styles.login}>
+            <div className={styles.loginBox}>
+              <h1>Username</h1>
+              <input
+                type="text"
+                value={user}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <h1>Password</h1>
+              <input
+                type="text"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                onClick={() =>
+                  setUser({
+                    name: userName,
+                    password: password,
+                    picture:
+                      "https://avatars.dicebear.com/api/human/" +
+                      userName +
+                      ".svg",
+                  })
+                }
+              >
+                Set
+              </button>
+            </div>
           </div>
         ) : (
           <NewMessageForm

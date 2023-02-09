@@ -32,7 +32,7 @@ const NewMessageForm = ({
         onClick={handleSendMessage}
         className={styles.sendMessageButton}
       >
-        {"send"}
+        &#x2191;
       </button>
     </form>
   );

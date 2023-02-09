@@ -1,4 +1,3 @@
-import { User } from "./types";
 import clientPromise from "./mongodb";
 
 export const addUser = async (
@@ -20,7 +19,7 @@ export const addUser = async (
   return { id, name: user.name, picture: user.picture };
 };
 
-export const removeUser = async (id: string, name: string, roomId:string) => {
+export const removeUser = async (id: string, name: string, roomId: string) => {
   const client = await clientPromise;
   const db = client.db();
   const collection = db.collection("users");

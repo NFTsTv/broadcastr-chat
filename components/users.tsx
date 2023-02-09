@@ -1,14 +1,12 @@
-import UserAvatar from "./useravatar";
-import styles from '@/styles/users.module.css';
 import { User } from '@/lib/types';
+import styles from '@/styles/users.module.css';
 
-const Users = ({ users }: { users: User[]}) => {
-    return (
-      <div style={{marginLeft: "auto", color: "black"}}>
-        currently online: {users.length}
-      </div>
-    )
-  };
-  
+const Users = ({ users }: { users: User[] }) => {
+  return (
+    <div className={styles.usersOnline}>
+      currently online: {users.length}
+    </div>
+  )
+};
+
 export default Users;
-  

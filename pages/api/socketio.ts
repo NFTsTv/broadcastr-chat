@@ -40,8 +40,8 @@ function ioHandler(req: NextApiRequest, res: NextApiResponse) {
           });
 
           // Leave the room if the user closes the socket
-          socket.on("disconnect", () => {
-            removeUser(password as string, roomId as string);
+          socket.on("disconnect", async () => {
+            await removeUser(password as string, name as string, roomId as string);
             io.in(roomId as string).emit(USER_LEAVE_CHAT_EVENT, user);
             socket.leave(roomId as string);
           });

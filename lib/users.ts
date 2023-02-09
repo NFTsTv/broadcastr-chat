@@ -20,12 +20,12 @@ export const addUser = async (
   return { id, name: user.name, picture: user.picture };
 };
 
-export const removeUser = async (id: string, roomId:string) => {
-  console.log(id)
+export const removeUser = async (id: string, name: string, roomId:string) => {
   const client = await clientPromise;
   const db = client.db();
   const collection = db.collection("users");
-  collection.deleteMany({ id, roomId });
+  console.log("remove user", id, roomId);
+  collection.deleteMany({ id, name, room: roomId });
 };
 
 // export const getUser = (id: string) => users.find((user) => user.id === id);

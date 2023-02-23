@@ -88,7 +88,6 @@ export default function useChat(roomId: string) {
       });
 
       socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message: Message) => {
-        console.log("new message", message);
         const incomingMessage = {
           ...message,
           ownedByCurrentUser: message.senderId === user.password,

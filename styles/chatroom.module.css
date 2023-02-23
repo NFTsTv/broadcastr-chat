@@ -33,17 +33,19 @@
 
 /* Login */
 .login {
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100%;
+  overflow: scroll;
 }
 
 .loginBox {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 400px;
@@ -51,22 +53,21 @@
   border-radius: 7px;
 }
 
-.loginBox h2 {
-  margin-bottom: 16px;
+.loginBox label {
   color: white;
+  margin: 1rem 0 .2rem 0;
 }
 
 .loginBox input {
-  margin: 8px 0;
-  padding: 8px 16px;
   border: none;
   border-radius: 4px;
   font-size: 16px;
+  padding: 6px;
 }
 
 .loginBox button {
-  margin: 16px 0;
-  padding: 8px 16px;
+  margin-top: 8px;
+  padding: 6px;
   border: none;
   border-radius: 4px;
   background-color: #36d399;

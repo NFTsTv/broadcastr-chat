@@ -9,12 +9,7 @@ export const addUser = async (
   const client = await clientPromise;
   const db = client.db();
   const collection = db.collection("users");
-  const existingUser = collection.find({ name, room });
-  console.log("exisiting", await existingUser.toArray());
   const user = { id, name, picture, room };
-
-
-
   await collection.insertOne(user);
   return { id, name: user.name, picture: user.picture };
 };
@@ -23,7 +18,6 @@ export const removeUser = async (id: string, name: string, roomId: string) => {
   const client = await clientPromise;
   const db = client.db();
   const collection = db.collection("users");
-  console.log("remove user", id, roomId);
   collection.deleteMany({ id, name, room: roomId });
 };
 

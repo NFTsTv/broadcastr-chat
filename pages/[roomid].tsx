@@ -91,13 +91,13 @@ export default function ChatRoom() {
         {!user ? (
           <div className={styles.login}>
             <div className={styles.loginBox}>
-              <h2>Choose a Username</h2>
+              <label>Choose a Username</label>
               <input
                 type="text"
                 value={user}
                 onChange={(e) => setUserName(e.target.value)}
               />
-              <h2>Choose a Password</h2>
+              <label>Choose a Password</label>
               <input
                 type="text"
                 value={password}
@@ -115,7 +115,7 @@ export default function ChatRoom() {
                   })
                 }
               >
-                Set
+                Chat!
               </button>
             </div>
           </div>

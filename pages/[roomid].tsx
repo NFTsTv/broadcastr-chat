@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useRef, FormEvent } from "react";
 import { useRouter } from "next/router";
 import useChat from "@/lib/usechat";
@@ -12,7 +11,8 @@ import styles from "@/styles/chatroom.module.css";
 
 export default function ChatRoom() {
   const router = useRouter();
-  const { roomid } = router.query;
+  const { roomid, isCastr, address } = router.query;
+  const isCastrBool = isCastr === "true";
   const {
     messages,
     user,
@@ -60,11 +60,27 @@ export default function ChatRoom() {
   }, [isTyping]);
 
   useEffect(() => {
-    // If the component has not been rendered yet, scrollTarget.current will be null
     if (scrollTarget.current) {
       (scrollTarget.current as any).scrollIntoView({ behavior: "smooth" });
     }
   }, [messages.length + typingUsers.length]);
+
+  useEffect(() => {
+    if (address) {
+      setUser({
+        name: address.slice(0, 4) as string,
+        password: address as string,
+        picture: "https://avatars.dicebear.com/api/human/" + address + ".svg",
+      });
+    }
+    if (isCastrBool) {
+      setUser({
+        name: "castr",
+        password: "castr",
+        picture: "https://avatars.dicebear.com/api/human/castr.svg",
+      });
+    }
+  }, [address, isCastr]);
 
   return (
     <Layout>
@@ -88,46 +104,48 @@ export default function ChatRoom() {
           </ol>
           <div ref={scrollTarget}></div>
         </div>
-        {!user ? (
-          <div className={styles.login}>
-            <div className={styles.loginBox}>
-              <label>Choose a Username</label>
-              <input
-                type="text"
-                value={user}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-              <label>Choose a Password</label>
-              <input
-                type="text"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button
-                onClick={() =>
-                  setUser({
-                    name: userName,
-                    password: password,
-                    picture:
-                      "https://avatars.dicebear.com/api/human/" +
-                      userName +
-                      ".svg",
-                  })
-                }
-              >
-                Chat!
-              </button>
+        {!isCastrBool ? (
+          !user ? (
+            <div className={styles.login}>
+              <div className={styles.loginBox}>
+                <label>Choose a Username</label>
+                <input
+                  type="text"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+                <label>Choose a Password</label>
+                <input
+                  type="text"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  onClick={() =>
+                    setUser({
+                      name: userName,
+                      password: password,
+                      picture:
+                        "https://avatars.dicebear.com/api/human/" +
+                        userName +
+                        ".svg",
+                    })
+                  }
+                >
+                  Chat!
+                </button>
+              </div>
             </div>
-          </div>
-        ) : (
-          <NewMessageForm
-            newMessage={newMessage}
-            handleNewMessageChange={handleNewMessageChange}
-            handleStartTyping={startTyping}
-            handleStopTyping={stopTyping}
-            handleSendMessage={handleSendMessage}
-          ></NewMessageForm>
-        )}
+          ) : (
+            <NewMessageForm
+              newMessage={newMessage}
+              handleNewMessageChange={handleNewMessageChange}
+              handleStartTyping={startTyping}
+              handleStopTyping={stopTyping}
+              handleSendMessage={handleSendMessage}
+            ></NewMessageForm>
+          )
+        ) : null}
       </div>
     </Layout>
   );
